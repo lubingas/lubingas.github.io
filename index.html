@@ -1,0 +1,1189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Solomon J. Lubinga</title>
+<meta name="description" content="Solomon J. Lubinga, Ph.D. — health economics, decision analysis and real-world evidence in oncology and global health.">
+<link rel="canonical" href="https://lubingas.github.io/">
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://lubingas.github.io/">
+<meta property="og:title" content="Solomon J. Lubinga, Ph.D.">
+<meta property="og:description" content="Health economics, decision modelling and real-world evidence in oncology and global health.">
+<meta property="og:image" content="https://lubingas.github.io/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@jonsloo">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%2317213a'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' font-weight='600' fill='%23eeece6' text-anchor='middle'%3ESL%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Inter:wght@400;500&display=swap">
+<style>
+/*
+  Solomon J. Lubinga — Version 11
+  Direction D "Elevated Classic", with a dark identity panel.
+  Source Serif 4 for prose and headings, Inter for labels and UI.
+  One accent hue: deep ink blue, shown as a lighter tint on the dark panel.
+*/
+:root {
+  --bg: #ffffff;
+  --bg2: #f7f6f3;
+  --fg: #1a1a17;
+  --fg-soft: #3b3a35;
+  --fg-muted: #5c5b55;
+  --accent: #2c5282;
+  --accent-light: #ebf0f8;
+  --border: #e2e1dc;
+
+  --panel: #17213a;
+  --panel-fg: #eeece6;
+  --panel-muted: #a7b1c6;
+  --panel-accent: #a9c3e6;
+  --panel-border: rgba(238, 236, 230, 0.14);
+  --panel-hover: rgba(169, 195, 230, 0.10);
+
+  --left-w: 280px;
+  --content-w: 720px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141412; --bg2: #1c1c19; --fg: #e6e4dc; --fg-soft: #cdcbc2; --fg-muted: #8f8d84;
+    --accent: #7ba7d4; --accent-light: #151e2b; --border: #2a2a26;
+    --panel: #0d1424; --panel-border: rgba(238, 236, 230, 0.10);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #141412; --bg2: #1c1c19; --fg: #e6e4dc; --fg-soft: #cdcbc2; --fg-muted: #8f8d84;
+  --accent: #7ba7d4; --accent-light: #151e2b; --border: #2a2a26;
+  --panel: #0d1424; --panel-border: rgba(238, 236, 230, 0.10);
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+/* ── Layout: dark panel bleeds to the left edge; the 280 + 720 frame stays centred ── */
+.layout {
+  display: grid;
+  grid-template-columns: max(var(--left-w), calc(50vw - (var(--left-w) + var(--content-w)) / 2 + var(--left-w))) minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+/* ── Left column — identity on the dark panel ── */
+.panel {
+  background: var(--panel);
+  color: var(--panel-fg);
+  display: flex;
+  justify-content: flex-end;
+  padding-left: env(safe-area-inset-left, 0px);
+}
+.ident {
+  width: var(--left-w);
+  align-self: flex-start;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: auto;
+  scrollbar-width: none;
+  padding: 3.5rem 1.75rem 2.5rem 2.25rem;
+  display: flex;
+  flex-direction: column;
+}
+.ident::-webkit-scrollbar { display: none; }
+
+.photo {
+  width: 168px;
+  height: 210px;
+  border-radius: 2px;
+  overflow: hidden;
+  background: #2a3550;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08);
+  margin-bottom: 1.5rem;
+  flex-shrink: 0;
+}
+.photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 22%;
+  display: block;
+  filter: grayscale(12%);
+}
+
+.name {
+  font-size: 1.16rem;
+  font-weight: 600;
+  color: var(--panel-fg);
+  line-height: 1.25;
+  margin-bottom: 0.45rem;
+  text-wrap: balance;
+}
+.nowrap { white-space: nowrap; }
+.postnom { white-space: nowrap; font-weight: 400; font-size: 0.8em; color: var(--panel-muted); letter-spacing: 0.01em; }
+.role {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--panel-muted);
+  line-height: 1.5;
+}
+.role strong {
+  display: block;
+  color: var(--panel-accent);
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+}
+
+/* Icon-only social squares */
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 1.25rem;
+}
+.social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px; height: 28px;
+  border: 1px solid var(--panel-border);
+  border-radius: 3px;
+  color: var(--panel-muted);
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+.social a:hover {
+  border-color: var(--panel-accent);
+  color: var(--panel-fg);
+  background: var(--panel-hover);
+  text-decoration: none;
+}
+.social svg { width: 14px; height: 14px; fill: currentColor; }
+.social a:focus-visible { outline-color: var(--panel-accent); }
+
+/* Nav */
+.ident-nav {
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--panel-border);
+  display: flex;
+  flex-direction: column;
+}
+.ident-nav a {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.78rem;
+  color: var(--panel-muted);
+  padding: 0.28rem 0 0.28rem 0.6rem;
+  border-left: 2px solid transparent;
+  transition: color 0.12s, border-color 0.12s;
+}
+.ident-nav a:hover,
+.ident-nav a.active {
+  color: var(--panel-fg);
+  border-left-color: var(--panel-accent);
+  text-decoration: none;
+}
+.ident-nav a:focus-visible { outline-color: var(--panel-accent); }
+
+/* ── Right column — content ── */
+.content {
+  max-width: var(--content-w);
+  padding: 3.5rem max(3.5rem, env(safe-area-inset-right, 0px)) 3rem 3.5rem;
+}
+
+.section {
+  margin-bottom: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--border);
+  scroll-margin-top: 2rem;
+}
+.section:last-of-type { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+h2 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--fg);
+  margin-bottom: 1.1rem;
+}
+
+p {
+  font-size: 0.92rem;
+  color: var(--fg-muted);
+  line-height: 1.75;
+  margin-bottom: 0.75rem;
+  max-width: 62ch;
+  text-wrap: pretty;
+}
+p:last-child { margin-bottom: 0; }
+em { font-style: italic; }
+
+/* About — a quiet, scholarly introduction */
+.intro {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--fg-soft);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+.bio p { font-size: 0.88rem; }
+
+.keywords {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.72rem;
+  color: var(--fg-muted);
+  line-height: 1.7;
+  margin-top: 1.25rem;
+  max-width: 62ch;
+}
+.keywords { display: flex; flex-wrap: wrap; }
+.keywords span { white-space: nowrap; }
+.keywords span:not(:last-child)::after { content: "·"; margin: 0 0.45rem; opacity: 0.5; }
+
+/* Entries — experience, education, projects */
+.entry { margin-bottom: 1.6rem; }
+.entry:last-child { margin-bottom: 0; }
+.entry-title {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--fg);
+  line-height: 1.4;
+}
+.entry-meta {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.75rem;
+  color: var(--accent);
+  margin-top: 0.15rem;
+  margin-bottom: 0.35rem;
+  font-variant-numeric: tabular-nums;
+}
+.entry-desc {
+  font-size: 0.88rem;
+  color: var(--fg-muted);
+  line-height: 1.65;
+  max-width: 62ch;
+  text-wrap: pretty;
+}
+.entry .keywords { margin-top: 0.6rem; }
+
+.status {
+  display: inline-block;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.64rem;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 0.05rem 0.4rem;
+  margin-left: 0.5rem;
+  vertical-align: 0.1em;
+  white-space: nowrap;
+}
+
+/* Scholarly work tabs */
+.tabs {
+  display: flex;
+  gap: 1.75rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tab {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--fg-muted);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  padding: 0.55rem 0 0.6rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.12s, border-color 0.12s;
+}
+.tab:hover { color: var(--fg); }
+.tab[aria-selected="true"] { color: var(--fg); border-bottom-color: var(--accent); }
+.tab .count { font-weight: 400; color: var(--fg-muted); margin-left: 0.3rem; font-variant-numeric: tabular-nums; }
+.tab-panel[hidden] { display: none; }
+.tab-panel { scroll-margin-top: 2rem; }
+
+/* Publications */
+.pub-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.1rem;
+  margin-bottom: 1.5rem;
+}
+.filter-btn {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.72rem;
+  color: var(--fg-muted);
+  background: none;
+  border: none;
+  border-bottom: 1px solid transparent;
+  padding: 0.1rem 0;
+  cursor: pointer;
+  transition: color 0.12s, border-color 0.12s;
+}
+.filter-btn:hover { color: var(--accent); }
+.filter-btn[aria-pressed="true"] { color: var(--accent); border-bottom-color: var(--accent); }
+
+.pub-group { margin-bottom: 2rem; }
+.pub-group:last-of-type { margin-bottom: 1.25rem; }
+.pub-group-label {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--border);
+}
+.pub-group-label .count { font-weight: 400; letter-spacing: 0; margin-left: 0.35rem; opacity: 0.75; font-variant-numeric: tabular-nums; }
+.pub-item { margin-bottom: 1rem; }
+.pub-item:last-child { margin-bottom: 0; }
+.pub-item[hidden], .pub-group[hidden] { display: none; }
+.pub-title {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--fg);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+.pub-title a { color: var(--fg); }
+.pub-title a:hover { color: var(--accent); text-decoration: none; }
+.pub-authors {
+  font-size: 0.8rem;
+  color: var(--fg-muted);
+  line-height: 1.5;
+  margin-top: 0.1rem;
+}
+.pub-authors strong { font-weight: 600; color: var(--fg-soft); }
+.pub-meta {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.72rem;
+  color: var(--fg-muted);
+  margin-top: 0.1rem;
+  font-variant-numeric: tabular-nums;
+}
+.pub-note { font-size: 0.82rem; }
+
+/* Honors — name and body left, year right */
+.honor {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1.5rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.honor:first-child { padding-top: 0; }
+.honor:last-child { border-bottom: none; padding-bottom: 0; }
+.honor-name { font-size: 0.9rem; color: var(--fg); line-height: 1.45; }
+.honor-org { font-size: 0.8rem; color: var(--fg-muted); line-height: 1.45; margin-top: 0.05rem; }
+.honor-year {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.75rem;
+  color: var(--accent);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Sub-labels inside a section */
+.sub-label {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  margin-bottom: 0.6rem;
+}
+
+/* Section note (e.g. the qualifier under Active Projects) */
+.section-note {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--fg-muted);
+  margin-top: -0.6rem;
+  margin-bottom: 1.4rem;
+}
+
+.site-footer {
+  margin-top: 3rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.72rem;
+  color: var(--fg-muted);
+}
+
+/* ── Phones and narrow windows: the dark panel stacks on top ── */
+@media (max-width: 760px) {
+  .layout { grid-template-columns: minmax(0, 1fr); }
+  .panel { justify-content: flex-start; padding-left: 0; }
+  .ident {
+    width: 100%;
+    position: static;
+    height: auto;
+    overflow: visible;
+    padding: 2rem max(20px, env(safe-area-inset-right, 0px)) 1.5rem max(20px, env(safe-area-inset-left, 0px));
+    display: grid;
+    grid-template-columns: 96px minmax(0, 1fr);
+    column-gap: 1.1rem;
+    align-items: center;
+  }
+  .photo { width: 96px; height: 120px; margin-bottom: 0; grid-row: 1; }
+  .ident-text { grid-row: 1; grid-column: 2; }
+  .social { grid-column: 1 / -1; margin-top: 1.25rem; }
+  .ident-nav {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.15rem 1rem;
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+  }
+  .ident-nav a { border-left: none; padding: 0.2rem 0; }
+  .ident-nav a.active { border-left: none; }
+  .content { padding: 2.25rem max(20px, env(safe-area-inset-right, 0px)) 2.5rem max(20px, env(safe-area-inset-left, 0px)); }
+  .section { margin-bottom: 2.25rem; padding-bottom: 2.25rem; }
+}
+</style>
+</head>
+<body>
+<div class="layout">
+
+  <!-- LEFT: identity on the dark panel -->
+  <aside class="panel">
+    <div class="ident">
+      <div class="photo">
+        <img src="headshot.jpg" alt="Portrait of Solomon J. Lubinga" width="360" height="504">
+      </div>
+
+      <div class="ident-text">
+        <div class="name"><span class="nowrap">Solomon J. Lubinga</span><span class="postnom">, Ph.D.</span></div>
+        <div class="role">
+          <strong>Director, US RWE &amp; Health Outcomes, Oncology</strong>
+          GlaxoSmithKline · Philadelphia, PA
+        </div>
+      </div>
+
+      <div class="social">
+        <a href="mailto:lubingasj@gmail.com" title="Email" aria-label="Email">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/solomon-lubinga-5b1ba325/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="https://scholar.google.com/citations?user=FPjSFB0AAAAJ&amp;hl=en&amp;oi=ao" target="_blank" rel="noopener" title="Google Scholar" aria-label="Google Scholar">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>
+        </a>
+        <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term=Lubinga+SJ%5BAuthor%5D" target="_blank" rel="noopener" title="PubMed" aria-label="PubMed">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 2H2v20h20v-9h-2v7H4V4h7V2z"/><path d="M16 2v2h2.586l-7.293 7.293 1.414 1.414L20 5.414V8h2V2h-6z"/></svg>
+        </a>
+        <a href="https://github.com/lubingas" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        </a>
+        <a href="https://twitter.com/jonsloo" target="_blank" rel="noopener" title="X / Twitter" aria-label="X / Twitter">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+      </div>
+
+      <nav class="ident-nav" aria-label="Sections">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#scholarly">Scholarly Work</a>
+        <a href="#education">Education</a>
+        <a href="#honors">Honors &amp; Awards</a>
+        <a href="#service">Service</a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- RIGHT: content -->
+  <main class="content">
+
+    <section class="section" id="about" aria-label="About">
+      <p class="intro">I apply decision-analytic methods, health economics, and real-world evidence to inform policy and strategy across oncology and global health.</p>
+      <div class="bio">
+        <p>As Director of US RWE &amp; Health Outcomes, Oncology at GlaxoSmithKline, I lead real-world evidence generation and health outcomes research supporting oncology portfolio decisions in the US market. My work sits at the intersection of economic modelling, clinical evidence synthesis, and payer strategy.</p>
+        <p>Before my current role, I spent nearly four years at Bristol Myers Squibb, most recently as Associate Director of WWHEOR Oncology, leading health economics research across the thoracic portfolio (NSCLC, SCLC, mesothelioma). Before industry, I spent six years at the University of Washington's <a href="https://sop.washington.edu/choice/" target="_blank" rel="noopener">CHOICE Institute</a>, where I completed my Ph.D. and later served as Senior Fellow. My research focused on economic evaluation of health interventions in low- and middle-income countries — Uganda, Malawi, and sub-Saharan Africa broadly — spanning HIV prevention, maternal health, schizophrenia, and supply chain policy.</p>
+        <p>I trained originally as a pharmacist at Makerere University (Kampala) and hold a Master's in Clinical Pharmacy from the University of Strathclyde (Glasgow). Prior to the US, I was a Lecturer at Mbarara University of Science and Technology.</p>
+      </div>
+      <div class="keywords">
+        <span>Health Economics</span><span>Decision Analysis</span><span>Oncology HEOR</span><span>Pharmacoeconomics</span><span>Global Health</span><span>Real-World Evidence</span><span>R / Python</span><span>Discrete Choice</span>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <h2>Experience</h2>
+      <div class="entry">
+        <div class="entry-title">Director, US RWE &amp; Health Outcomes, Oncology</div>
+        <div class="entry-meta">GlaxoSmithKline (GSK) · July 2022 – Present · Philadelphia, PA</div>
+        <div class="entry-desc">Health economics and outcomes research supporting oncology portfolio strategy, payer submissions, and value communication in the US market.</div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-title">Associate Director, WWHEOR – US Market, Oncology</div>
+        <div class="entry-meta">Bristol Myers Squibb (BMS) · November 2018 – July 2022 · Lawrenceville, NJ</div>
+        <div class="entry-desc">Joined as Senior Manager, US HEOR, and became Associate Director in June 2020. Global health economics and outcomes research for the thoracic oncology portfolio (NSCLC, SCLC, mesothelioma, SCCHN). Led cost-effectiveness, budget impact, and real-world evidence analyses supporting global HTA submissions and US payer strategy for nivolumab-based regimens including CheckMate 227 and 9LA.</div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-title">Senior Fellow</div>
+        <div class="entry-meta">CHOICE Institute, University of Washington · 2017 – 2018 · Seattle, WA</div>
+        <div class="entry-desc">Post-doctoral research in decision modelling, economic evaluation, and health policy with applications in rare diseases, blood safety, and global health. Collaborated with ICER on cost-effectiveness models for rare disease interventions in the US.</div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-title">Lecturer, Pharmacy</div>
+        <div class="entry-meta">Mbarara University of Science and Technology · 2005 – 2012 · Mbarara, Uganda</div>
+        <div class="entry-desc">Taught pharmacotherapeutics, clinical pharmacokinetics, clinical trial design, pharmacoepidemiology and pharmacoeconomics. Introduced clinical clerkships into the B.Pharm. curriculum, supervised undergraduate research, and served as acting head of the Department of Pharmacy from 2009 to 2011.</div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <h2>Active Projects</h2>
+      <p class="section-note">Independent research I pursue outside my role at GSK.</p>
+
+      <div class="entry">
+        <div class="entry-title">Demand for Medical Male Circumcision: Theory-Driven Preference Heterogeneity<span class="status">In preparation</span></div>
+        <div class="entry-meta">Extends my doctoral dissertation research &middot; Fishing communities, Mukono district, Uganda</div>
+        <div class="entry-desc">This project returns to the discrete choice experiment I fielded for my doctoral dissertation (406 men, 4,872 choice tasks, 13 attributes), first presented at ISPOR 2018. The new work completes the microeconomic framework I began in the dissertation, a two-period model of the decision to circumcise, and uses it to decide which preference correlations to model rather than leaving that choice to the data. Theory-driven, data-driven and fully correlated mixed logit specifications are estimated alongside conditional logit and latent class models, and compared on what each implies for demand-side and supply-side policy. A second paper will extend the framework with behavioural factors and integrated choice and latent variable models.</div>
+        <div class="keywords"><span>Discrete Choice</span><span>Mixed Logit</span><span>Microeconomic Theory</span><span>HIV Prevention</span><span>Uganda</span></div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-title">VOI Explorer: Quantifying the Value of Follow-Up in Survival Extrapolation<span class="status">In progress</span></div>
+        <div class="entry-meta">R/Shiny application &middot; Methods paper in progress</div>
+        <div class="entry-desc">A publication-grade R/Shiny application quantifying Expected Value of Perfect Information (EVPI) and certainty premiums arising from survival extrapolation uncertainty in health technology assessment. The central framing treats accumulated trial maturity as an EVPI problem: additional follow-up measurably absorbs decision uncertainty, quantifiable in life-months per patient and population dollar terms. The tool implements a three-tier architecture &mdash; within-trial EVPI via &tau;-sweep and recentered bootstrap, cross-trial certainty premiums via corrected AFT and Gompertz/Weibull trajectories, and a model-averaging engine with three-way variance decomposition. Targeting SMDM 2027, with CheckMate 067 (advanced melanoma) as the demonstration case study.</div>
+        <div class="keywords"><span>Value of Information</span><span>Survival Analysis</span><span>HTA Methods</span><span>R/Shiny</span><span>Oncology</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="scholarly">
+      <h2>Scholarly Work</h2>
+
+      <div class="tabs" role="tablist" aria-label="Scholarly work">
+        <button class="tab" type="button" role="tab" id="tab-publications" aria-controls="publications" aria-selected="true">Publications <span class="count">41</span></button>
+        <button class="tab" type="button" role="tab" id="tab-presentations" aria-controls="presentations" aria-selected="false" tabindex="-1">Presentations <span class="count">6</span></button>
+        <button class="tab" type="button" role="tab" id="tab-posters" aria-controls="posters" aria-selected="false" tabindex="-1">Posters <span class="count">35</span></button>
+      </div>
+
+      <div class="tab-panel" role="tabpanel" id="publications" aria-labelledby="tab-publications">
+        <div class="pub-filter" role="group" aria-label="Filter publications by topic">
+          <button class="filter-btn" type="button" data-filter="all" aria-pressed="true">All topics</button>
+          <button class="filter-btn" type="button" data-filter="oncology" aria-pressed="false">Oncology</button>
+          <button class="filter-btn" type="button" data-filter="hecon" aria-pressed="false">Health Economics</button>
+          <button class="filter-btn" type="button" data-filter="global" aria-pressed="false">Global Health</button>
+        </div>
+
+        <div class="pub-group">
+          <div class="pub-group-label">Journal Articles <span class="count">39</span></div>
+        <div class="pub-item" data-cat="oncology hecon">
+          <div class="pub-title"><a href="https://doi.org/10.1200/PO-25-01110" target="_blank" rel="noopener">Molecular Testing in Primary Advanced or Recurrent Endometrial Cancer: A Cost-Effectiveness Analysis</a></div>
+          <div class="pub-authors">Chen Y, <strong>Lubinga SJ</strong>, Ramsey S, Hurteau J, Reynolds J, Carlson JJ.</div>
+          <div class="pub-meta">JCO Precision Oncology · 2026</div>
+        </div>
+        <div class="pub-item" data-cat="oncology">
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.ctarc.2026.101274" target="_blank" rel="noopener">The role of platinum-free interval in advanced endometrial cancer treatment: A real-world study of 843 patients</a></div>
+          <div class="pub-authors">Chan JK, Hunger M, <strong>Lubinga SJ</strong>, Peter R, Paranilam J, Hurteau J, Chase DM.</div>
+          <div class="pub-meta">Cancer Treatment and Research Communications · 2026</div>
+        </div>
+        <div class="pub-item" data-cat="oncology hecon">
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.vhri.2026.101618" target="_blank" rel="noopener">Healthcare Resource Utilization and Costs After Disease Progression With First-Line Systemic Therapy in Patients With Advanced Endometrial Cancer in the United States</a></div>
+          <div class="pub-authors">Moore-Schiltz L, <strong>Lubinga SJ</strong>, Tkacz J.</div>
+          <div class="pub-meta">Value in Health Regional Issues · 2026</div>
+        </div>
+        <div class="pub-item" data-cat="oncology">
+          <div class="pub-title"><a href="https://doi.org/10.1080/14796694.2025.2516891" target="_blank" rel="noopener">Treatment patterns and outcomes by mismatch repair/microsatellite instability status among patients with primary advanced or recurrent endometrial cancer in the United States</a></div>
+          <div class="pub-authors">Chase DM, Kobayashi M, Gomez P, <strong>Lubinga SJ</strong>, Chan JK.</div>
+          <div class="pub-meta">Future Oncology · 2025</div>
+        </div>
+        <div class="pub-item" data-cat="oncology">
+          <div class="pub-title"><a href="https://doi.org/10.1200/PO-24-00815" target="_blank" rel="noopener">Real-World Molecular Testing Rates and Patterns in Patients With Primary Advanced or Recurrent Endometrial Cancer in the United States</a></div>
+          <div class="pub-authors">Chen Y, <strong>Lubinga SJ</strong>, Williams T, Carlson JJ, Ramsey S.</div>
+          <div class="pub-meta">JCO Precision Oncology · 2025</div>
+        </div>
+        <div class="pub-item" data-cat="oncology hecon">
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.ygyno.2024.10.021" target="_blank" rel="noopener">Cost-effectiveness of dostarlimab plus carboplatin-paclitaxel for primary advanced or recurrent endometrial cancer from a US payer perspective</a></div>
+          <div class="pub-authors">Coleman RL, <strong>Lubinga SJ</strong>, Shen Q, Walder L, Burton M, Mathews C.</div>
+          <div class="pub-meta">Gynecologic Oncology · 2025</div>
+        </div>
+        <div class="pub-item" data-cat="oncology hecon">
+          <div class="pub-title"><a href="https://doi.org/10.1080/13696998.2024.2403278" target="_blank" rel="noopener">Budget impact of dostarlimab plus carboplatin-paclitaxel for primary advanced or recurrent endometrial cancer from a third-party US payer perspective</a></div>
+          <div class="pub-authors"><strong>Lubinga SJ</strong>, Walder L, Burton M, Shen Q.</div>
+          <div class="pub-meta">Journal of Medical Economics · 2024</div>
+        </div>
+        <div class="pub-item" data-cat="hecon">
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.ejvs.2023.08.045" target="_blank" rel="noopener">Cost Effectiveness of Early Endovenous Thrombus Removal for Acute Iliofemoral Deep Vein Thrombosis in the United Kingdom</a></div>
+          <div class="pub-authors">Babigumira JB, Black SA, <strong>Lubinga SJ</strong>, Pouncey AL.</div>
+          <div class="pub-meta">European Journal of Vascular and Endovascular Surgery · 2024</div>
+        </div>
+        <div class="pub-item" data-cat="oncology hecon">
+          <div class="pub-title"><a href="https://doi.org/10.18553/jmcp.2023.29.9.1054" target="_blank" rel="noopener">Adverse event costs associated with first-line therapy for advanced non-small cell lung cancer in the United States: An analysis of clinical trials of immune checkpoint inhibitors</a></div>
+          <div class="pub-authors">Stenehjem D, <strong>Lubinga SJ</strong>, Wu A, Betts KA.</div>
+          <div class="pub-meta">Journal of Managed Care &amp; Specialty Pharmacy · 2023</div>
+        </div>
+        <div class="pub-item" data-cat="oncology hecon">
+          <div class="pub-title"><a href="https://doi.org/10.37765/ajmc.2023.89360" target="_blank" rel="noopener">Better together? costs of first-line chemoimmunotherapy for advanced non-small cell lung cancer</a></div>
+          <div class="pub-authors">Kish J, Liassou D, Hartman J, <strong>Lubinga SJ</strong>, Chopra D, Feinberg B.</div>
+          <div class="pub-meta">American Journal of Managed Care · 2023</div>
+        </div>
+        <div class="pub-item" data-cat="oncology hecon">
+          <div class="pub-title"><a href="https://doi.org/10.1080/13696998.2022.2077549" target="_blank" rel="noopener">Cost-effectiveness analysis of nivolumab plus ipilimumab versus platinum-doublet chemotherapy for first-line treatment of stage IV or recurrent non-small cell lung cancer in the United States</a></div>
+          <div class="pub-authors">Berling M, Chaudhary MA, Yuan Y, Varol N, Dale P, Testa E, Klint J, Lee A, <strong>Lubinga SJ</strong>, Penrod JR.</div>
+          <div class="pub-meta">Journal of Medical Economics · 2022</div>
+        </div>
+        <div class="pub-item" data-cat="oncology hecon">
+          <div class="pub-title"><a href="https://doi.org/10.1080/13696998.2022.2048573" target="_blank" rel="noopener">Cost-effectiveness analysis of nivolumab plus ipilimumab plus two cycles of platinum-doublet chemotherapy versus platinum-doublet chemotherapy alone for first-line treatment of stage IV or recurrent non-small cell lung cancer in the United States</a></div>
+          <div class="pub-authors">Polyzoi M, Sandhu H, Maervoet J, Yuan Y, Chaudhary MA, Varol N, Lee A, Dale P, Jones C, <strong>Lubinga SJ</strong>, Penrod JR.</div>
+          <div class="pub-meta">Journal of Medical Economics · 2022</div>
+        </div>
+        <div class="pub-item" data-cat="oncology">
+          <div class="pub-title"><a href="https://doi.org/10.18632/oncotarget.28178" target="_blank" rel="noopener">Real-world survival analysis by tumor mutational burden in non-small cell lung cancer: a multisite U.S. study</a></div>
+          <div class="pub-authors">Willis C, Bauer H, Au TH, Menon J, Unni S, Tran D, Rivers Z, Akerley W, Schabath MB, Badin F, Sekhon A, Patel M, Xia B, Gustafson B, Villano JL, Thomas JM, <strong>Lubinga SJ</strong>, Cantrell MA, Brixner D, Stenehjem D.</div>
+          <div class="pub-meta">Oncotarget · 2022</div>
+        </div>
+        <div class="pub-item" data-cat="oncology hecon">
+          <div class="pub-title"><a href="https://doi.org/10.37765/ajmc.2021.88726" target="_blank" rel="noopener">Cost-effectiveness of nivolumab in patients with NSCLC in the United States</a></div>
+          <div class="pub-authors">Chaudhary MA, <strong>Lubinga SJ</strong>, Smare C, Hertel N, Penrod JR.</div>
+          <div class="pub-meta">American Journal of Managed Care · 2021</div>
+        </div>
+        <div class="pub-item" data-cat="oncology">
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.dib.2021.107195" target="_blank" rel="noopener">Real-world progression-free survival in first-line advanced non-small cell lung cancer treated with immunotherapy-based regimens using a US dataset</a></div>
+          <div class="pub-authors">Waterhouse D, Lam J, Betts KA, Yin L, Gao S, Yuan Y, Hartman J, Rao S, <strong>Lubinga SJ</strong>, Stenehjem D.</div>
+          <div class="pub-meta">Data in Brief · 2021</div>
+        </div>
+        <div class="pub-item" data-cat="oncology">
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.lungcan.2021.04.007" target="_blank" rel="noopener">Real-world outcomes of immunotherapy-based regimens in first-line advanced non-small cell lung cancer</a></div>
+          <div class="pub-authors">Waterhouse D, Lam J, Betts KA, Yin L, Gao S, Yuan Y, Hartman J, Rao S, <strong>Lubinga SJ</strong>, Stenehjem D.</div>
+          <div class="pub-meta">Lung Cancer · 2021</div>
+        </div>
+        <div class="pub-item" data-cat="oncology">
+          <div class="pub-title"><a href="https://doi.org/10.2217/fon-2021-0230" target="_blank" rel="noopener">Treatment patterns in patients with metastatic non-small-cell lung cancer in the era of immunotherapy</a></div>
+          <div class="pub-authors">Stenehjem D, <strong>Lubinga SJ</strong>, Betts KA, Tang W, Jenkins M, Yuan Y, Hartman J, Rao S, Lam J, Waterhouse D.</div>
+          <div class="pub-meta">Future Oncology · 2021</div>
+        </div>
+        <div class="pub-item" data-cat="oncology">
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.cllc.2020.07.009" target="_blank" rel="noopener">Real-World Effectiveness of Nivolumab Monotherapy After Prior Systemic Therapy in Advanced Non-Small-Cell Lung Cancer in the United States</a></div>
+          <div class="pub-authors">Stenehjem DD, <strong>Lubinga SJ</strong>, Gupte-Singh K, Zhang Y, Le TK, Penrod JR, Smith CB.</div>
+          <div class="pub-meta">Clinical Lung Cancer · 2021</div>
+        </div>
+        <div class="pub-item" data-cat="oncology hecon">
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.jval.2018.11.014" target="_blank" rel="noopener">Cost-Effectiveness Analysis of Pertuzumab With Trastuzumab and Chemotherapy Compared to Trastuzumab and Chemotherapy in the Adjuvant Treatment of HER2-Positive Breast Cancer in the United States</a></div>
+          <div class="pub-authors">Garrison LP Jr, Babigumira J, Tournier C, Goertz HP, <strong>Lubinga SJ</strong>, Perez EA.</div>
+          <div class="pub-meta">Value in Health · 2019</div>
+        </div>
+        <div class="pub-item" data-cat="hecon">
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.jval.2018.09.2841" target="_blank" rel="noopener">Cost Utility of Voretigene Neparvovec for Biallelic RPE65-Mediated Inherited Retinal Disease</a></div>
+          <div class="pub-authors">Zimmermann M, <strong>Lubinga SJ</strong>, Banken R, Rind D, Cramer G, Synnott PG, Chapman RH, Khan S, Carlson J.</div>
+          <div class="pub-meta">Value in Health · 2019</div>
+        </div>
+        <div class="pub-item" data-cat="hecon">
+          <div class="pub-title"><a href="https://doi.org/10.18553/jmcp.2019.25.2.143" target="_blank" rel="noopener">The Effectiveness and Value of Lanadelumab and C1 Esterase Inhibitors for Prophylaxis of Hereditary Angioedema Attacks</a></div>
+          <div class="pub-authors">Agboola F, <strong>Lubinga SJ</strong>, Carlson J, Lin GA, Dreitlein WB, Pearson SD.</div>
+          <div class="pub-meta">Journal of Managed Care &amp; Specialty Pharmacy · 2019</div>
+        </div>
+        <div class="pub-item" data-cat="global">
+          <div class="pub-title"><a href="https://doi.org/10.1186/s12978-018-0642-0" target="_blank" rel="noopener">Study protocol: using a mobile phone-based application to increase awareness and uptake of sexual and reproductive health services among the youth in Uganda. A randomized controlled trial</a></div>
+          <div class="pub-authors">Nuwamanya E, Nuwasiima A, Babigumira JU, Asiimwe FT, <strong>Lubinga SJ</strong>, Babigumira JB.</div>
+          <div class="pub-meta">Reproductive Health · 2018</div>
+        </div>
+        <div class="pub-item" data-cat="hecon">
+          <div class="pub-title"><a href="https://doi.org/10.2450/2016.0130-16" target="_blank" rel="noopener">Cost-utility and budget impact of methylene blue-treated plasma compared to quarantine plasma</a></div>
+          <div class="pub-authors">Babigumira JB, <strong>Lubinga SJ</strong>, Castro E, Custer B.</div>
+          <div class="pub-meta">Blood Transfusion · 2018</div>
+        </div>
+        <div class="pub-item" data-cat="global">
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.pvr.2017.06.004" target="_blank" rel="noopener">Acceptability of cervical cancer screening using visual inspection among women attending a childhood immunization clinic in Uganda</a></div>
+          <div class="pub-authors">Li M, Nyabigambo A, Navvuga P, Nuwamanya E, Nuwasiima A, Kaganda P, Asiimwe FT, Vodicka E, Mugisha NM, Mukose A, Kwesiga DK, <strong>Lubinga SJ</strong>, Garrison LP Jr, Babigumira JB.</div>
+          <div class="pub-meta">Papillomavirus Research · 2017</div>
+        </div>
+        <div class="pub-item" data-cat="global">
+          <div class="pub-title"><a href="https://doi.org/10.1186/s12978-017-0400-8" target="_blank" rel="noopener">Study protocol: incentives for increased access to comprehensive family planning for urban youth using a benefits card in Uganda. A quasi-experimental study</a></div>
+          <div class="pub-authors">Nuwasiima A, Nuwamanya E, Navvuga P, Babigumira JU, Asiimwe FT, <strong>Lubinga SJ</strong>, Babigumira JB.</div>
+          <div class="pub-meta">Reproductive Health · 2017</div>
+        </div>
+        <div class="pub-item" data-cat="global">
+          <div class="pub-title"><a href="https://doi.org/10.1186/s12913-017-2530-7" target="_blank" rel="noopener">Impact of pharmacy worker training and deployment on access to essential medicines for children under five in Malawi: a cluster quasi-experimental evaluation</a></div>
+          <div class="pub-authors">Babigumira JB, <strong>Lubinga SJ</strong>, Jenny AM, Larsen-Cooper E, Crawford J, Matemba C, Stergachis A.</div>
+          <div class="pub-meta">BMC Health Services Research · 2017</div>
+        </div>
+        <div class="pub-item" data-cat="global">
+          <div class="pub-title"><a href="https://doi.org/10.2427/12547" target="_blank" rel="noopener">Predictors of HIV prevention knowledge and sexual behaviors among students at Makerere University Kampala, Uganda</a></div>
+          <div class="pub-authors">Nuwasiima A, Onyango NO, Navvuga P, Nuwamanya E, Nyabigambo A, <strong>Lubinga SJ</strong>, Babigumira JB.</div>
+          <div class="pub-meta">Epidemiology, Biostatistics and Public Health · 2017</div>
+        </div>
+        <div class="pub-item" data-cat="hecon global">
+          <div class="pub-title"><a href="https://doi.org/10.1371/journal.pntd.0004860" target="_blank" rel="noopener">A Cost-Effectiveness Tool to Guide the Prioritization of Interventions for Rheumatic Fever and Rheumatic Heart Disease Control in African Nations</a></div>
+          <div class="pub-authors">Watkins D, <strong>Lubinga SJ</strong>, Mayosi B, Babigumira JB.</div>
+          <div class="pub-meta">PLOS Neglected Tropical Diseases · 2016</div>
+        </div>
+        <div class="pub-item" data-cat="global">
+          <div class="pub-title"><a href="https://doi.org/10.1186/s13104-016-2144-x" target="_blank" rel="noopener">Examination of patient flow in a rural health center in Malawi</a></div>
+          <div class="pub-authors">Jafry MA, Jenny AM, <strong>Lubinga SJ</strong>, Larsen-Cooper E, Crawford J, Matemba C, Babigumira JB.</div>
+          <div class="pub-meta">BMC Research Notes · 2016</div>
+        </div>
+        <div class="pub-item" data-cat="global">
+          <div class="pub-title"><a href="https://doi.org/10.4314/ahs.v15i4.34" target="_blank" rel="noopener">Adverse drug reaction reporting among health care workers at Mulago National Referral and Teaching hospital in Uganda</a></div>
+          <div class="pub-authors">Katusiime B, Semakula D, <strong>Lubinga SJ</strong>.</div>
+          <div class="pub-meta">African Health Sciences · 2015</div>
+        </div>
+        <div class="pub-item" data-cat="global">
+          <div class="pub-title"><a href="https://doi.org/10.1371/journal.pone.0145543" target="_blank" rel="noopener">Perceptions of HIV and Safe Male Circumcision in High HIV Prevalence Fishing Communities on Lake Victoria, Uganda</a></div>
+          <div class="pub-authors">Nevin PE, Pfeiffer J, Kibira SP, <strong>Lubinga SJ</strong>, Mukose A, Babigumira JB.</div>
+          <div class="pub-meta">PLOS ONE · 2015</div>
+        </div>
+        <div class="pub-item" data-cat="hecon global">
+          <div class="pub-title"><a href="https://doi.org/10.1371/journal.pone.0142550" target="_blank" rel="noopener">Potential Cost-Effectiveness of Prenatal Distribution of Misoprostol for Prevention of Postpartum Hemorrhage in Uganda</a></div>
+          <div class="pub-authors"><strong>Lubinga SJ</strong>, Atukunda EC, Wasswa-Ssalongo G, Babigumira JB.</div>
+          <div class="pub-meta">PLOS ONE · 2015</div>
+        </div>
+        <div class="pub-item" data-cat="hecon global">
+          <div class="pub-title"><a href="https://doi.org/10.1007/s40258-015-0176-3" target="_blank" rel="noopener">A Cost-effectiveness Analysis of Antipsychotics for Treatment of Schizophrenia in Uganda</a></div>
+          <div class="pub-authors"><strong>Lubinga SJ</strong>, Mutamba BB, Nganizi A, Babigumira JB.</div>
+          <div class="pub-meta">Applied Health Economics and Health Policy · 2015</div>
+        </div>
+        <div class="pub-item" data-cat="global">
+          <div class="pub-title"><a href="https://doi.org/10.1186/s13012-014-0156-2" target="_blank" rel="noopener">Impact of pharmacy worker training and deployment on access to essential medicines and health outcomes in Malawi: protocol for a cluster quasi-experimental evaluation</a></div>
+          <div class="pub-authors"><strong>Lubinga SJ</strong>, Jenny AM, Larsen-Cooper E, Crawford J, Matemba C, Stergachis A, Babigumira JB.</div>
+          <div class="pub-meta">Implementation Science · 2014</div>
+        </div>
+        <div class="pub-item" data-cat="global">
+          <div class="pub-title"><a href="https://doi.org/10.1186/1477-7525-11-118" target="_blank" rel="noopener">Health-related quality of life and social support among women treated for abortion complications in western Uganda</a></div>
+          <div class="pub-authors"><strong>Lubinga SJ</strong>, Levine GA, Jenny AM, Ngonzi J, Mukasa-Kivunike P, Stergachis A, Babigumira JB.</div>
+          <div class="pub-meta">Health and Quality of Life Outcomes · 2013</div>
+        </div>
+        <div class="pub-item" data-cat="global">
+          <div class="pub-title"><a href="https://doi.org/10.1080/09540121.2011.648600" target="_blank" rel="noopener">Concomitant herbal medicine and Antiretroviral Therapy (ART) use among HIV patients in Western Uganda: a cross-sectional analysis of magnitude and patterns of use, associated factors and impact on ART adherence</a></div>
+          <div class="pub-authors"><strong>Lubinga SJ</strong>, Kintu A, Atuhaire J, Asiimwe S.</div>
+          <div class="pub-meta">AIDS Care · 2012</div>
+        </div>
+        <div class="pub-item" data-cat="global">
+          <div class="pub-title"><a href="https://pubmed.ncbi.nlm.nih.gov/22275946/" target="_blank" rel="noopener">Potential drug-drug interactions on in-patient medication prescriptions at Mbarara Regional Referral Hospital (MRRH) in western Uganda: prevalence, clinical importance and associated factors</a></div>
+          <div class="pub-authors"><strong>Lubinga SJ</strong>, Uwiduhaye E.</div>
+          <div class="pub-meta">African Health Sciences · 2011</div>
+        </div>
+        <div class="pub-item" data-cat="">
+          <div class="pub-title"><a href="https://doi.org/10.1186/1756-0500-4-398" target="_blank" rel="noopener">Pilot evaluation of the psychometric properties of a self-medication Risk Assessment Tool among elderly patients in a community setting</a></div>
+          <div class="pub-authors"><strong>Lubinga SJ</strong>, Millar I, Babigumira JB.</div>
+          <div class="pub-meta">BMC Research Notes · 2011</div>
+        </div>
+        <div class="pub-item" data-cat="">
+          <div class="pub-title">Applications of pharmacogenetics in revealing variations in pharmacodynamics</div>
+          <div class="pub-authors">Reddy PMK, <strong>Lubinga SJ</strong>.</div>
+          <div class="pub-meta">East and Central African Journal of Pharmaceutical Sciences · 2009</div>
+        </div>
+        </div>
+
+      <div class="pub-group">
+        <div class="pub-group-label">ICER Evidence Reports <span class="count">2</span></div>
+        <div class="pub-item" data-cat="hecon">
+          <div class="pub-title"><a href="https://icer.org/wp-content/uploads/2020/10/ICER_HAE_Final_Evidence_Report_111518-1.pdf" target="_blank" rel="noopener">Prophylaxis for Hereditary Angioedema with Lanadelumab and C1 Inhibitors: Effectiveness and Value</a></div>
+          <div class="pub-authors">Lin GA, Agboola F, Samur S, Chapman R, Cianciolo L, Seidner M, Pearson SD, Rind D, Carlson J, <strong>Lubinga SJ</strong>.</div>
+          <div class="pub-meta">Institute for Clinical and Economic Review, Final Evidence Report · November 2018</div>
+        </div>
+        <div class="pub-item" data-cat="hecon">
+          <div class="pub-title"><a href="https://collections.nlm.nih.gov/catalog/nlm:nlmuid-101744949-pdf" target="_blank" rel="noopener">Voretigene Neparvovec for Biallelic RPE65-Mediated Retinal Disease: Effectiveness and Value</a></div>
+          <div class="pub-authors">Banken R, Rind D, Cramer G, Synnott PG, Chapman R, Khan S, Pearson SD, Carlson J, Zimmermann M, <strong>Lubinga SJ</strong>.</div>
+          <div class="pub-meta">Institute for Clinical and Economic Review, Final Evidence Report · February 2018</div>
+        </div>
+      </div>
+
+
+      <p class="pub-note">Full publication list on <a href="https://scholar.google.com/citations?user=FPjSFB0AAAAJ&amp;hl=en&amp;oi=ao" target="_blank" rel="noopener">Google Scholar</a> and <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term=Lubinga+SJ%5BAuthor%5D" target="_blank" rel="noopener">PubMed</a>.</p>
+      </div>
+
+      <div class="tab-panel" role="tabpanel" id="presentations" aria-labelledby="tab-presentations" hidden>
+        <div class="pub-item">
+          <div class="pub-title"><a href="https://doi.org/10.1136/ijgc-2024-igcs.14" target="_blank" rel="noopener">Impact of investigator-assessed response to dostarlimab on quality of life in the RUBY trial of primary advanced or recurrent endometrial cancer</a></div>
+          <div class="pub-authors">Cloven N, Roed H, Gilbert L, Novák Z, Edelson M, Savarese A, Ring K, Gropp-Meier M, Sawyer B, Osborne J, Bouberhan S, Backes F, Coleman R, Nowicki P, Mendivil A, <strong>Lubinga SJ</strong>, Payer T, Chepynoga K, Powell M, Mirza M.</div>
+          <div class="pub-meta">IGCS 2024 · International Journal of Gynecological Cancer 2024;34(Suppl 3):A14–A15, abstract PO001/#1130</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.jval.2021.04.026" target="_blank" rel="noopener">A cost-effectiveness analysis of nivolumab plus ipilimumab plus two cycles of platinum-doublet chemotherapy versus platinum-doublet chemotherapy in the first-line treatment of stage IV or recurrent non-small cell lung cancer in the United States</a></div>
+          <div class="pub-authors">Polyzoi M, Sandhu H, Maervoet J, Yuan Y, Chaudhary M, Varol N, Lee A, Dale P, Jones C, <strong>Lubinga SJ</strong>, Penrod JR.</div>
+          <div class="pub-meta">ISPOR 2021 · Value in Health 2021;24(Suppl 1):S5, abstract EC1</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title"><a href="https://doi.org/10.1186/2052-3211-7-S1-O23" target="_blank" rel="noopener">Introducing an enhanced cadre of pharmacy assistants to improve dispensing, management, and availability of medicines at the health centre level in Malawi</a></div>
+          <div class="pub-authors">Ziba M, Babigumira J, Crawford J, Kandaya J, Chimenya C, Jenny A, <strong>Lubinga SJ</strong>, Matemba C, Larsen-Cooper E, Stergachis A.</div>
+          <div class="pub-meta">Journal of Pharmaceutical Policy and Practice 2014;7(Suppl 1):O23</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title">Comparing the outcomes of pain management strategies in bariatric surgery patients</div>
+          <div class="pub-authors"><strong>Lubinga SJ</strong>, Evans H, Hansen RN.</div>
+          <div class="pub-meta">ObesityWeek 2014, abstract A5006</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title">The cost of quality assurance for reproductive health commodities in Uganda: pre-shipment versus post-shipment testing and opportunities for cost saving</div>
+          <div class="pub-authors"><strong>Lubinga SJ</strong>.</div>
+          <div class="pub-meta">1st Uganda National Symposium on Improving Quality Assurance for Reproductive Health Commodities, Jinja, Uganda, May 2012</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title">Dispensing of prescription-only drugs without prescription: a cross-sectional study in Mbarara Municipality, Uganda</div>
+          <div class="pub-authors">Buzaare P, Tusiimire J, Haynes AL, <strong>Lubinga SJ</strong>.</div>
+          <div class="pub-meta">Pharmaceutical Society of Uganda CPD Workshop, Kampala, 2009</div>
+        </div>
+        <p class="pub-note">Oral presentations at congresses and symposia. Abstracts published in journal supplements link to their DOI.</p>
+      </div>
+
+      <div class="tab-panel" role="tabpanel" id="posters" aria-labelledby="tab-posters" hidden>
+        <div class="pub-item">
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.ijgc.2026.105039" target="_blank" rel="noopener">Real-world outcomes of dostarlimab plus chemotherapy in primary advanced or recurrent endometrial cancer by mismatch repair status from the Flatiron database</a></div>
+          <div class="pub-authors">Randall LM, <strong>Lubinga SJ</strong>, Shen Q, Hurteau J, Zajac M, Peter R, Hunger M, Paranilam J, Farley J.</div>
+          <div class="pub-meta">International Journal of Gynecological Cancer 2026;36(10):105039</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.ijgc.2026.105430" target="_blank" rel="noopener">Treatment utilization and associated factors in patients with primary advanced or first recurrent endometrial cancer after immunotherapy combination approval in the United States</a></div>
+          <div class="pub-authors">Randall LM, <strong>Lubinga SJ</strong>, Shen Q, Hurteau J, Zajac M, Peter R, Hunger M, Paranilam J, Farley J.</div>
+          <div class="pub-meta">International Journal of Gynecological Cancer 2026;36(10):105430</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.ygyno.2026.01.159" target="_blank" rel="noopener">Temporal trends in the cost of adverse events in patients with primary advanced or recurrent endometrial cancer in the ENGOT-EN6-NSGO/GOG-3031/RUBY trial</a></div>
+          <div class="pub-authors">Lokich E, Sundar M, Song J, <strong>Lubinga SJ</strong>, Betts K, Willmott L.</div>
+          <div class="pub-meta">SGO Annual Meeting 2026 · Gynecologic Oncology 2026;208:S99–S100</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.ygyno.2026.01.292" target="_blank" rel="noopener">Real-world retrospective analysis of first-line systemic treatment with dostarlimab plus chemotherapy in patients with advanced or recurrent endometrial cancer</a></div>
+          <div class="pub-authors">Nakayama J, Abrams J, Watkins S, Hurteau J, <strong>Lubinga SJ</strong>, Mirsky V, Burda E, Heffernan T, Ashmore J, Raff L.</div>
+          <div class="pub-meta">SGO Annual Meeting 2026 · Gynecologic Oncology 2026;208:S147–S148</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.jval.2025.04.2007" target="_blank" rel="noopener">Healthcare resource utilization and costs following disease progression with first-line systemic therapy in patients with advanced endometrial cancer in the US</a></div>
+          <div class="pub-authors">Moore-Schiltz LC, <strong>Lubinga SJ</strong>, Tkacz J.</div>
+          <div class="pub-meta">ISPOR 2025 · Value in Health 2025;28(6 Suppl):S137, abstract EE408</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title"><a href="https://doi.org/10.1200/JCO.2025.43.16_suppl.5598" target="_blank" rel="noopener">Molecular testing in primary advanced or recurrent endometrial cancer: a cost-effectiveness analysis</a></div>
+          <div class="pub-authors">Chen Y, <strong>Lubinga SJ</strong>, Ramsey SD, Hurteau J, Reynolds J, Carlson JJ.</div>
+          <div class="pub-meta">ASCO Annual Meeting 2025 · Journal of Clinical Oncology 2025;43(16 Suppl):5598</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title"><a href="https://doi.org/10.1200/JCO.2025.43.16_suppl.5609" target="_blank" rel="noopener">The role of platinum-free interval in advanced endometrial cancer treatment: a real-world study of 843 patients</a></div>
+          <div class="pub-authors">Chan JK, Hunger M, <strong>Lubinga SJ</strong>, Peter R, Paranilam J, Hurteau J, Chase DM.</div>
+          <div class="pub-meta">ASCO Annual Meeting 2025 · Journal of Clinical Oncology 2025;43(16 Suppl):5609</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title"><a href="https://doi.org/10.1200/OP.2024.20.10_suppl.395" target="_blank" rel="noopener">Real-world molecular testing patterns in primary advanced or recurrent endometrial cancer in the US</a></div>
+          <div class="pub-authors">Ramsey SD, Chen Y, <strong>Lubinga SJ</strong>, Williams T, Carlson JJ.</div>
+          <div class="pub-meta">JCO Oncology Practice 2024;20(10 Suppl):395</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.annonc.2024.08.796" target="_blank" rel="noopener">Impact of investigator-assessed response on overall survival in patients with primary advanced or recurrent endometrial cancer in the ENGOT-EN6-NSGO/GOG3031/RUBY trial</a></div>
+          <div class="pub-authors">Mathews C, Koliadi A, Gilbert L, Slomovitz BM, Frühauf F, Buttin B, Özgül N, Monk BJ, Fountzilas G, Billingsley C, Trinidad J, Braly P, Boone J, Black D, Sharma S, <strong>Lubinga SJ</strong>, Sharpe DJ, Ronzino G, Powell MA, Mirza MR.</div>
+          <div class="pub-meta">ESMO 2024 · Annals of Oncology 2024;35(Suppl 2):S558–S559, abstract 734P</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title"><a href="https://doi.org/10.1136/jitc-2023-SITC2023.1424" target="_blank" rel="noopener">Treatment patterns and outcomes by mismatch repair/microsatellite instability status among patients with primary advanced or recurrent endometrial cancer in the United States</a></div>
+          <div class="pub-authors">Chase DM, Kobayashi M, Gomez P, <strong>Lubinga SJ</strong>.</div>
+          <div class="pub-meta">SITC 2023 · Journal for ImmunoTherapy of Cancer 2023;11, abstract 1424</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title"><a href="https://doi.org/10.1136/jitc-2023-SITC2023.0588" target="_blank" rel="noopener">Dostarlimab + chemotherapy for the treatment of primary advanced or recurrent endometrial cancer in the RUBY trial: post hoc analysis of the costs of grade ≥3 adverse events</a></div>
+          <div class="pub-authors"><strong>Lubinga SJ</strong>, Payer T, Gregg M, Lee L, Allonby O, Garcia-Fernandez L, Hurteau J.</div>
+          <div class="pub-meta">SITC 2023 · Journal for ImmunoTherapy of Cancer 2023;11, abstract 588</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title"><a href="https://doi.org/10.1136/jitc-2023-SITC2023.0589" target="_blank" rel="noopener">RUBY trial post hoc analysis of number needed to treat and incremental costs per outcome of dostarlimab + carboplatin-paclitaxel vs placebo + carboplatin-paclitaxel for primary advanced/recurrent endometrial cancer</a></div>
+          <div class="pub-authors"><strong>Lubinga SJ</strong>, Payer T, Gregg M, Lee L, Allonby O, Garcia-Fernandez L, Hurteau J.</div>
+          <div class="pub-meta">SITC 2023 · Journal for ImmunoTherapy of Cancer 2023;11, abstract 589</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.annonc.2022.07.1259" target="_blank" rel="noopener">Adverse event burden of nivolumab-based immuno-oncology therapy with/without chemotherapy for first-line advanced non-small cell lung cancer</a></div>
+          <div class="pub-authors">Schwartzberg L, Wu A, Hartman J, Wang T, Yin X, Chen J, Betts KA, <strong>Lubinga SJ</strong>.</div>
+          <div class="pub-meta">ESMO 2022 · Annals of Oncology 2022;33(Suppl 7):S1069–S1070, abstract 1135P</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.annonc.2022.02.019" target="_blank" rel="noopener">Treatment-free survival in metastatic non-small cell lung cancer patients treated with first-line nivolumab plus ipilimumab or platinum-doublet chemotherapy in CheckMate 227</a></div>
+          <div class="pub-authors">Peters S, Penrod JR, Li J, <strong>Lubinga SJ</strong>, Gupta R, Bushong J, Rizzo J, Ramalingam S.</div>
+          <div class="pub-meta">European Lung Cancer Congress 2022 · Annals of Oncology 2022;33(Suppl 2):S32–S33, abstract 10P</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title"><a href="https://doi.org/10.1136/jitc-2020-SITC2020.0731" target="_blank" rel="noopener">Costs of care for first-line treatment of advanced non-small cell lung cancer: a real-world claims analysis</a></div>
+          <div class="pub-authors">Kish J, Chopra D, Liassou D, <strong>Lubinga SJ</strong>, Hartman J, Feinberg B.</div>
+          <div class="pub-meta">SITC 2020 · Journal for ImmunoTherapy of Cancer 2020;8, abstract 731</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.annonc.2020.08.1596" target="_blank" rel="noopener">Trial-based costs of all-cause adverse events in first-line therapy for advanced non-small cell lung cancer: findings from CheckMate 227</a></div>
+          <div class="pub-authors"><strong>Lubinga SJ</strong>, King SB, Betts KA, Rao S, Castriota F, Mahin M, Orvis E, Marathe S, Ma J, Stenehjem D.</div>
+          <div class="pub-meta">ESMO 2020 · Annals of Oncology 2020;31(Suppl 4):S827–S828, abstract 1282P</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.annonc.2020.08.1630" target="_blank" rel="noopener">Trial-based costs of all-cause adverse events in first-line therapy for advanced non-small cell lung cancer: findings from CheckMate 9LA</a></div>
+          <div class="pub-authors">Stenehjem D, <strong>Lubinga SJ</strong>, King SB, Betts KA, Rao S, Castriota F, Mahin M, Orvis E, Marathe S, Ma J.</div>
+          <div class="pub-meta">ESMO 2020 · Annals of Oncology 2020;31(Suppl 4):S850–S851, abstract 1316P</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.jtho.2020.10.054" target="_blank" rel="noopener">Real-world outcomes of immunotherapy-based regimens in first-line advanced non-small cell lung cancer</a></div>
+          <div class="pub-authors">Waterhouse D, Lam J, Betts KA, Yin L, Gao S, Yuan Y, Hartman J, Rao S, <strong>Lubinga SJ</strong>, Stenehjem D.</div>
+          <div class="pub-meta">IASLC North America Conference on Lung Cancer 2020 · Journal of Thoracic Oncology 2021;16(1 Suppl):S17–S18, abstract MO01.06</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.jtho.2020.10.053" target="_blank" rel="noopener">Treatment patterns in patients with advanced non-small cell lung cancer in the era of immunotherapy</a></div>
+          <div class="pub-authors">Stenehjem D, <strong>Lubinga SJ</strong>, Betts KA, Tang W, Jenkins M, Yuan Y, Hartman J, Rao S, Lam J, Waterhouse D.</div>
+          <div class="pub-meta">IASLC North America Conference on Lung Cancer 2020 · Journal of Thoracic Oncology 2021;16(1 Suppl):S17, abstract MO01.05</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.jtho.2020.10.050" target="_blank" rel="noopener">Cost-effectiveness analysis of nivolumab plus ipilimumab in the first-line treatment of metastatic non-small cell lung cancer in the United States</a></div>
+          <div class="pub-authors">Berling M, Chaudhary MA, Yuan Y, Varol N, Dale P, Testa E, Klint J, Lee A, <strong>Lubinga SJ</strong>, Penrod JR.</div>
+          <div class="pub-meta">IASLC North America Conference on Lung Cancer 2020 · Journal of Thoracic Oncology 2021;16(1 Suppl):S15–S16, abstract MO01.02</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title">Association of tumor mutational burden with clinical, genomic, and treatment characteristics in advanced non-small cell lung cancer</div>
+          <div class="pub-authors">Willis C, Bauer H, Au TH, Unni S, Akerley W, Sekhon A, Badin F, Villano JL, Schabath MB, Xia B, Gustafson B, Gupte-Singh K, Korytowsky B, Thomas J-M, Krigsfield G, <strong>Lubinga SJ</strong>, Brixner D, Stenehjem D.</div>
+          <div class="pub-meta">SITC 2019, National Harbor, MD · Journal for ImmunoTherapy of Cancer 2019;7, abstract 282</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title"><a href="https://doi.org/10.1093/annonc/mdz449.021" target="_blank" rel="noopener">Real-world outcomes for patients with recurrent/metastatic squamous cell carcinoma of the head and neck treated with nivolumab</a></div>
+          <div class="pub-authors">Singh P, You M, <strong>Lubinga SJ</strong>, Zhang Y.</div>
+          <div class="pub-meta">Annals of Oncology 2019;30(Suppl 11):xi24</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title"><a href="https://doi.org/10.1093/annonc/mdz260.020" target="_blank" rel="noopener">Real-world effectiveness of nivolumab monotherapy after prior systemic therapy in advanced non-small cell lung cancer in the United States</a></div>
+          <div class="pub-authors">Stenehjem DD, <strong>Lubinga SJ</strong>, Gupte-Singh K, Zhang Y, Le TK, Penrod JR.</div>
+          <div class="pub-meta">ESMO 2019, Barcelona · Annals of Oncology 2019;30(Suppl 5):v615</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.jval.2019.04.1657" target="_blank" rel="noopener">Cost-effectiveness of lanadelumab and C1-inhibitors for prophylaxis against acute attacks of hereditary angioedema</a></div>
+          <div class="pub-authors"><strong>Lubinga SJ</strong>, Agboola FO, Lin G, Seidner M, Rind D, Carlson JJ.</div>
+          <div class="pub-meta">ISPOR 2019, New Orleans · Value in Health 2019;22(Suppl 2):S339, abstract PRO24</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.jval.2018.04.961" target="_blank" rel="noopener">Heterogeneity in preferences for medical male circumcision services: a discrete choice experiment among uncircumcised men in fishing communities in Uganda</a></div>
+          <div class="pub-authors"><strong>Lubinga SJ</strong>, Babigumira JB, Graham SM, Garrison L, Basu A.</div>
+          <div class="pub-meta">ISPOR 2018, Baltimore · Value in Health 2018;21(Suppl 1):S127</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.jval.2018.04.1398" target="_blank" rel="noopener">A cost-effectiveness analysis of voretigene neparvovec for vision loss due to biallelic RPE65-mediated inherited retinal disease</a></div>
+          <div class="pub-authors">Zimmermann M, <strong>Lubinga SJ</strong>, Rind D, Chapman R, Carlson J.</div>
+          <div class="pub-meta">ISPOR 2018, Baltimore · Value in Health 2018;21(Suppl 1):S205–S206</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.jval.2017.08.1971" target="_blank" rel="noopener">Mapping the Modified Ashworth Scale and Physician's Global Assessment to preference-based health utilities in adults with lower limb spasticity</a></div>
+          <div class="pub-authors">Hansen R, <strong>Lubinga SJ</strong>, Fonseca T, Dinet J, Gabriel S, Sullivan S.</div>
+          <div class="pub-meta">ISPOR Europe 2017 · Value in Health 2017;20(9):A727</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.jval.2016.09.1647" target="_blank" rel="noopener">Knowledge, attitudes and practices of cervical cancer screening among women attending a childhood immunization clinic in Uganda</a></div>
+          <div class="pub-authors">Nuwasiima A, Navvuga P, Nuwamanya E, <strong>Lubinga SJ</strong>, Babigumira J.</div>
+          <div class="pub-meta">ISPOR Europe 2016 · Value in Health 2016;19(7):A632–A633</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title">A budget impact analysis of the use of methylene blue-treated plasma compared to quarantine plasma in Spain</div>
+          <div class="pub-authors">Babigumira JB, <strong>Lubinga SJ</strong>, Castro E, Custer B.</div>
+          <div class="pub-meta">AABB Annual Meeting 2015, Anaheim · Transfusion 2015;55:81A</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.aogh.2015.02.737" target="_blank" rel="noopener">Strategies for prevention and control of rheumatic fever and rheumatic heart disease in sub-Saharan Africa: a preliminary cost-effectiveness analysis</a></div>
+          <div class="pub-authors">Watkins D, <strong>Lubinga SJ</strong>, Babigumira JB.</div>
+          <div class="pub-meta">Annals of Global Health 2015;81(1):102–103</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.jval.2015.03.710" target="_blank" rel="noopener">A cost-effectiveness analysis of antipsychotics for schizophrenia in Uganda</a></div>
+          <div class="pub-authors"><strong>Lubinga SJ</strong>, Mutamba BB, Nganizi A, Babigumira JB.</div>
+          <div class="pub-meta">ISPOR 2015, Philadelphia · Value in Health 2015;18(3):A121</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.jval.2014.03.741" target="_blank" rel="noopener">Understanding the choice of family planning methods among women aged 15–49 years in Uganda: evidence from the Uganda Demographic and Health Survey 2011</a></div>
+          <div class="pub-authors">Navvuga P, Nabukalu DO, <strong>Lubinga SJ</strong>, Matovu F, Babigumira JB.</div>
+          <div class="pub-meta">ISPOR 2014, Montreal · Value in Health 2014;17(3):A127–A128</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.jval.2014.03.937" target="_blank" rel="noopener">Potential cost-effectiveness of prenatal distribution of misoprostol for prevention of postpartum hemorrhage in Uganda</a></div>
+          <div class="pub-authors"><strong>Lubinga SJ</strong>, Atukunda E, Ssalongo GW, Babigumira JB.</div>
+          <div class="pub-meta">ISPOR 2014, Montreal · Value in Health 2014;17(3):A161</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.jval.2013.03.350" target="_blank" rel="noopener">Impact of abortion complications on health-related quality of life in Uganda</a></div>
+          <div class="pub-authors"><strong>Lubinga SJ</strong>, Levine GA, Jenny A, Stergachis A, Babigumira JB.</div>
+          <div class="pub-meta">ISPOR 2013, New Orleans · Value in Health 2013;16(3):A77</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title">Impact of concomitant herbal medicine and antiretroviral therapy use on ART adherence at Mbarara Regional Referral Hospital, Uganda</div>
+          <div class="pub-authors"><strong>Lubinga SJ</strong>, Kintu A, Atuhaire J, Asiimwe S.</div>
+          <div class="pub-meta">6th IAS Conference on HIV Pathogenesis, Treatment and Prevention, Rome, 2011, abstract MOPE270</div>
+        </div>
+        <p class="pub-note">Congress posters. Abstracts published in journal supplements link to their DOI.</p>
+      </div>
+    </section>
+
+    <section class="section" id="education">
+      <h2>Education</h2>
+      <div class="entry">
+        <div class="entry-title">Ph.D., Pharmaceutical Sciences</div>
+        <div class="entry-meta">University of Washington — CHOICE Institute · 2012 – 2017 · Seattle, WA</div>
+        <div class="entry-desc">Dissertation: "Demand for medical male circumcision for HIV prevention: the influence of economic and behavioral psychological factors and their policy implications." Advisors: Anirban Basu, Joseph Babigumira, Lou Garrison.</div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-title">M.Sc., Clinical Pharmacy</div>
+        <div class="entry-meta">University of Strathclyde · 2007 – 2008 · Glasgow, UK</div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-title">Bachelor of Pharmacy</div>
+        <div class="entry-meta">Makerere University · 1999 – 2003 · Kampala, Uganda</div>
+      </div>
+    </section>
+
+    <section class="section" id="honors">
+      <h2>Honors &amp; Awards</h2>
+      <div class="honors">
+        <div class="honor">
+          <div><div class="honor-name">Outstanding Dissertation Award</div><div class="honor-org">University of Washington School of Pharmacy</div></div>
+          <div class="honor-year">2017</div>
+        </div>
+        <div class="honor">
+          <div><div class="honor-name">PORPP Rubenstein Endowment Graduate Student Support Award</div><div class="honor-org">University of Washington</div></div>
+          <div class="honor-year">2016</div>
+        </div>
+        <div class="honor">
+          <div><div class="honor-name">Reducing Barriers for the Ambitious Award</div><div class="honor-org">University of Washington</div></div>
+          <div class="honor-year">2015, 2016</div>
+        </div>
+        <div class="honor">
+          <div><div class="honor-name">Pharmaceutical Outcomes Research &amp; Policy Program Endowed Prize in Health Economics and Policy</div><div class="honor-org">University of Washington</div></div>
+          <div class="honor-year">2014</div>
+        </div>
+        <div class="honor">
+          <div><div class="honor-name">Top 15 Abstracts</div><div class="honor-org">ObesityWeek 2014</div></div>
+          <div class="honor-year">2014</div>
+        </div>
+        <div class="honor">
+          <div><div class="honor-name">Thomas Francis Jr. Fellowship in Global Health</div><div class="honor-org">University of Washington</div></div>
+          <div class="honor-year">2013</div>
+        </div>
+        <div class="honor">
+          <div><div class="honor-name">Stergachis Distinguished Fellowship for International Exchange</div><div class="honor-org">University of Washington</div></div>
+          <div class="honor-year">2013</div>
+        </div>
+        <div class="honor">
+          <div><div class="honor-name">Fellow, Southern Africa FAIMER Institute</div><div class="honor-org">Foundation for the Advancement of International Medical Education and Research</div></div>
+          <div class="honor-year">2010</div>
+        </div>
+        <div class="honor">
+          <div><div class="honor-name">David Lawson Prize in Clinical Pharmacy</div><div class="honor-org">University of Strathclyde, Glasgow</div></div>
+          <div class="honor-year">2008</div>
+        </div>
+        <div class="honor">
+          <div><div class="honor-name">Commonwealth Scholarship</div><div class="honor-org">Commonwealth Scholarship Commission, UK</div></div>
+          <div class="honor-year">2007</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="service">
+      <h2>Service</h2>
+      <div class="sub-label">Peer Review</div>
+      <p>Ad hoc reviewer for <em>Journal of the American Pharmacists Association</em>, <em>Applied Health Economics and Health Policy</em>, <em>Drug Safety</em>, <em>BJOG: British Journal of Obstetrics and Gynaecology</em>, <em>BMC Psychiatry</em>, <em>Cost Effectiveness and Resource Allocation</em>, <em>Value in Health</em>, and <em>BMJ Public Health</em>.</p>
+    </section>
+
+    <footer class="site-footer">© 2026 Solomon J. Lubinga</footer>
+  </main>
+</div>
+
+<script>
+(function () {
+  // Highlight the nav link for the section in view
+  var sections = Array.prototype.slice.call(document.querySelectorAll('main section[id]'));
+  var links = document.querySelectorAll('.ident-nav a');
+  function setActive() {
+    var current = sections.length ? sections[0].id : '';
+    var y = window.scrollY + window.innerHeight * 0.25;
+    sections.forEach(function (s) { if (s.offsetTop <= y) current = s.id; });
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+      current = sections[sections.length - 1].id;
+    }
+    links.forEach(function (a) {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  }
+  window.addEventListener('scroll', setActive, { passive: true });
+  window.addEventListener('resize', setActive);
+  setActive();
+
+  // Scholarly work tabs
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  function selectTab(tab, focus) {
+    tabs.forEach(function (t) {
+      var on = t === tab;
+      t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+    if (focus) tab.focus();
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () {
+      selectTab(t);
+      var id = t.getAttribute('aria-controls');
+      try { history.replaceState(null, '', '#' + id); } catch (e) {}
+    });
+    t.addEventListener('keydown', function (e) {
+      var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (d) { e.preventDefault(); selectTab(tabs[(i + d + tabs.length) % tabs.length], true); }
+    });
+  });
+  function openFromHash() {
+    var id = (location.hash || '').slice(1);
+    var tab = tabs.filter(function (t) { return t.getAttribute('aria-controls') === id; })[0];
+    if (tab) {
+      selectTab(tab);
+      document.getElementById('scholarly').scrollIntoView();
+    }
+  }
+  window.addEventListener('hashchange', openFromHash);
+  openFromHash();
+
+  // Publication filter: one topic at a time; clicking the active topic again returns to All
+  var buttons = document.querySelectorAll('.filter-btn');
+  var active = 'all';
+  function apply() {
+    document.querySelectorAll('#publications .pub-item').forEach(function (item) {
+      var cats = (item.getAttribute('data-cat') || '').split(' ');
+      item.hidden = active !== 'all' && cats.indexOf(active) === -1;
+    });
+    document.querySelectorAll('#publications .pub-group').forEach(function (g) {
+      g.hidden = !g.querySelector('.pub-item:not([hidden])');
+    });
+    buttons.forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-filter') === active));
+    });
+  }
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var f = b.getAttribute('data-filter');
+      active = (f === active) ? 'all' : f;
+      apply();
+    });
+  });
+})();
+</script>
+</body>
+</html>
