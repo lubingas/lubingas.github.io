@@ -636,7 +636,7 @@ em { font-style: italic; }
         <button class="tab" type="button" role="tab" id="tab-publications" aria-controls="publications" aria-selected="true">Publications <span class="count">41</span></button>
         <button class="tab" type="button" role="tab" id="tab-presentations" aria-controls="presentations" aria-selected="false" tabindex="-1">Presentations <span class="count">6</span></button>
         <button class="tab" type="button" role="tab" id="tab-posters" aria-controls="posters" aria-selected="false" tabindex="-1">Posters <span class="count">35</span></button>
-        <button class="tab" type="button" role="tab" id="tab-models" aria-controls="models" aria-selected="false" tabindex="-1">Interactive Models <span class="count">2</span></button>
+        <button class="tab" type="button" role="tab" id="tab-models" aria-controls="models" aria-selected="false" tabindex="-1">Interactive Models <span class="count">3</span></button>
       </div>
 
       <div class="tab-panel" role="tabpanel" id="publications" aria-labelledby="tab-publications">
@@ -1110,6 +1110,22 @@ em { font-style: italic; }
             <a href="https://theejonslo.shinyapps.io/schizo-model/" target="_blank" rel="noopener">Open the app &#8599;</a>
             <a href="https://github.com/lubingas/Schizo-Model" target="_blank" rel="noopener">Code on GitHub</a>
             <a href="https://doi.org/10.1007/s40258-015-0176-3" target="_blank" rel="noopener">Paper</a>
+          </div>
+        </div>
+        <div class="entry">
+          <div class="entry-title">Benefits and costs of MMC demand creation in Uganda</div>
+          <div class="entry-meta">R/Shiny application &middot; Interactive version of a working paper (2018, updated 2026)</div>
+          <div class="entry-desc">A benefit-cost analysis of five ways to increase the uptake of medical male circumcision in fishing communities on Lake Victoria: outreach services, device circumcision, cash incentives and their combinations. The benefit of each policy to men is its compensating variation, estimated from a discrete choice experiment with 406 uncircumcised men, and it is set against the cost of the services and the HIV treatment costs that additional circumcisions avert. In the app you can change any input, design your own services and policies, and run one-way and probabilistic sensitivity analyses.</div>
+          <ol class="model-steps" aria-label="How the model developed">
+            <li><span class="step">2017 &middot; Survey</span>Fielded the discrete choice experiment in Ntenjeru sub-county, Mukono, for my doctoral dissertation.</li>
+            <li><span class="step">2018 &middot; Working paper</span>Estimated the choice models and the compensating variation of three service delivery policies. The paper was never published.</li>
+            <li><span class="step">2026 &middot; Shiny</span>Extended into a formal benefit-cost analysis of five policies, calibrated to the observed uptake of circumcision, and published as an interactive app with the code and the choice data. A torch estimator reproduces the 2018 estimates exactly.</li>
+          </ol>
+          <div class="entry-desc">The aim is methodological: to show that a choice experiment can supply the benefit side of a formal benefit-cost analysis.</div>
+          <div class="model-links">
+            <a href="https://theejonslo.shinyapps.io/mmc-cba/" target="_blank" rel="noopener">Open the app &#8599;</a>
+            <a href="https://github.com/lubingas/MMC-CBA" target="_blank" rel="noopener">Code and data on GitHub</a>
+            <a href="https://github.com/lubingas/MMC-CBA/blob/main/www/working_paper.pdf" target="_blank" rel="noopener">Working paper</a>
           </div>
         </div>
         <p class="pub-note">The apps run on shinyapps.io and can take a few seconds to start.</p>
