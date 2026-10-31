@@ -636,7 +636,7 @@ em { font-style: italic; }
         <button class="tab" type="button" role="tab" id="tab-publications" aria-controls="publications" aria-selected="true">Publications <span class="count">41</span></button>
         <button class="tab" type="button" role="tab" id="tab-presentations" aria-controls="presentations" aria-selected="false" tabindex="-1">Presentations <span class="count">6</span></button>
         <button class="tab" type="button" role="tab" id="tab-posters" aria-controls="posters" aria-selected="false" tabindex="-1">Posters <span class="count">35</span></button>
-        <button class="tab" type="button" role="tab" id="tab-models" aria-controls="models" aria-selected="false" tabindex="-1">Interactive Models <span class="count">1</span></button>
+        <button class="tab" type="button" role="tab" id="tab-models" aria-controls="models" aria-selected="false" tabindex="-1">Interactive Models <span class="count">2</span></button>
       </div>
 
       <div class="tab-panel" role="tabpanel" id="publications" aria-labelledby="tab-publications">
@@ -814,6 +814,7 @@ em { font-style: italic; }
           <div class="pub-title"><a href="https://doi.org/10.1007/s40258-015-0176-3" target="_blank" rel="noopener">A Cost-effectiveness Analysis of Antipsychotics for Treatment of Schizophrenia in Uganda</a></div>
           <div class="pub-authors"><strong>Lubinga SJ</strong>, Mutamba BB, Nganizi A, Babigumira JB.</div>
           <div class="pub-meta">Applied Health Economics and Health Policy · 2015</div>
+          <div class="pub-extra"><a href="https://theejonslo.shinyapps.io/schizo-model/" target="_blank" rel="noopener">Interactive model &#8599;</a></div>
         </div>
         <div class="pub-item" data-cat="global">
           <div class="pub-title"><a href="https://doi.org/10.1186/s13012-014-0156-2" target="_blank" rel="noopener">Impact of pharmacy worker training and deployment on access to essential medicines and health outcomes in Malawi: protocol for a cluster quasi-experimental evaluation</a></div>
@@ -1093,6 +1094,21 @@ em { font-style: italic; }
             <a href="https://theejonslo.shinyapps.io/pph-misoprostol/" target="_blank" rel="noopener">Open the app &#8599;</a>
             <a href="https://github.com/lubingas/PPH-Model" target="_blank" rel="noopener">Code on GitHub</a>
             <a href="https://doi.org/10.1371/journal.pone.0142550" target="_blank" rel="noopener">Paper</a>
+          </div>
+        </div>
+        <div class="entry">
+          <div class="entry-title">Antipsychotics for schizophrenia in Uganda</div>
+          <div class="entry-meta">R/Shiny application &middot; Interactive version of Lubinga et al., <em>Applied Health Economics and Health Policy</em> 2015</div>
+          <div class="entry-desc">A Markov model that follows people with schizophrenia from the age of 25 and compares five antipsychotics they could start on: chlorpromazine, haloperidol, quetiapine, risperidone and olanzapine. In the app you can edit any input, from drug prices to transition probabilities and life tables, see the years people spend in each health state, compare costs and DALYs on the efficiency frontier, and run one-way and probabilistic sensitivity analyses.</div>
+          <ol class="model-steps" aria-label="How the model developed">
+            <li><span class="step">2015 &middot; Excel</span>Built as a spreadsheet model for the published analysis.</li>
+            <li><span class="step">2026 &middot; R</span>Rewritten in R and checked line by line against the spreadsheet. The corrections made along the way are listed in the app and with the code, so its results differ from the paper.</li>
+            <li><span class="step">2026 &middot; Shiny</span>Published as an interactive app with its code, so anyone can run the model in a browser.</li>
+          </ol>
+          <div class="model-links">
+            <a href="https://theejonslo.shinyapps.io/schizo-model/" target="_blank" rel="noopener">Open the app &#8599;</a>
+            <a href="https://github.com/lubingas/Schizo-Model" target="_blank" rel="noopener">Code on GitHub</a>
+            <a href="https://doi.org/10.1007/s40258-015-0176-3" target="_blank" rel="noopener">Paper</a>
           </div>
         </div>
         <p class="pub-note">The apps run on shinyapps.io and can take a few seconds to start.</p>
