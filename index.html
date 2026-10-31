@@ -389,6 +389,50 @@ em { font-style: italic; }
   font-variant-numeric: tabular-nums;
 }
 .pub-note { font-size: 0.82rem; }
+.pub-extra { font-family: 'Inter', system-ui, sans-serif; font-size: 0.72rem; margin-top: 0.15rem; }
+.model-steps {
+  list-style: none;
+  margin: 0.9rem 0 0.9rem 0.2rem;
+  padding: 0;
+  border-left: 1px solid var(--border);
+  max-width: 62ch;
+}
+.model-steps li {
+  position: relative;
+  padding: 0 0 0.7rem 1.1rem;
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: var(--fg-muted);
+}
+.model-steps li:last-child { padding-bottom: 0; }
+.model-steps li::before {
+  content: "";
+  position: absolute;
+  left: -4px;
+  top: 0.45rem;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.model-steps .step {
+  display: block;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+}
+.entry-desc + .entry-desc { margin-top: 0.6rem; }
+.model-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.25rem;
+  margin-top: 0.65rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+}
 
 /* Honors — name and body left, year right */
 .honor {
@@ -592,6 +636,7 @@ em { font-style: italic; }
         <button class="tab" type="button" role="tab" id="tab-publications" aria-controls="publications" aria-selected="true">Publications <span class="count">41</span></button>
         <button class="tab" type="button" role="tab" id="tab-presentations" aria-controls="presentations" aria-selected="false" tabindex="-1">Presentations <span class="count">6</span></button>
         <button class="tab" type="button" role="tab" id="tab-posters" aria-controls="posters" aria-selected="false" tabindex="-1">Posters <span class="count">35</span></button>
+        <button class="tab" type="button" role="tab" id="tab-models" aria-controls="models" aria-selected="false" tabindex="-1">Interactive Models <span class="count">1</span></button>
       </div>
 
       <div class="tab-panel" role="tabpanel" id="publications" aria-labelledby="tab-publications">
@@ -763,6 +808,7 @@ em { font-style: italic; }
           <div class="pub-title"><a href="https://doi.org/10.1371/journal.pone.0142550" target="_blank" rel="noopener">Potential Cost-Effectiveness of Prenatal Distribution of Misoprostol for Prevention of Postpartum Hemorrhage in Uganda</a></div>
           <div class="pub-authors"><strong>Lubinga SJ</strong>, Atukunda EC, Wasswa-Ssalongo G, Babigumira JB.</div>
           <div class="pub-meta">PLOS ONE · 2015</div>
+          <div class="pub-extra"><a href="https://theejonslo.shinyapps.io/pph-misoprostol/" target="_blank" rel="noopener">Interactive model &#8599;</a></div>
         </div>
         <div class="pub-item" data-cat="hecon global">
           <div class="pub-title"><a href="https://doi.org/10.1007/s40258-015-0176-3" target="_blank" rel="noopener">A Cost-effectiveness Analysis of Antipsychotics for Treatment of Schizophrenia in Uganda</a></div>
@@ -1030,6 +1076,26 @@ em { font-style: italic; }
           <div class="pub-meta">6th IAS Conference on HIV Pathogenesis, Treatment and Prevention, Rome, 2011, abstract MOPE270</div>
         </div>
         <p class="pub-note">Congress posters. Abstracts published in journal supplements link to their DOI.</p>
+      </div>
+
+      <div class="tab-panel" role="tabpanel" id="models" aria-labelledby="tab-models" hidden>
+        <div class="entry">
+          <div class="entry-title">Prenatal misoprostol for postpartum haemorrhage in Uganda</div>
+          <div class="entry-meta">R/Shiny application &middot; Interactive version of Lubinga et al., <em>PLOS ONE</em> 2015</div>
+          <div class="entry-desc">The decision model from the paper compares prenatal distribution of misoprostol with no misoprostol across wealth quintiles, from governmental and societal perspectives. In the app you can browse and edit every input with its source, see PPH cases, deaths and DALYs averted with their costs, and run one-way and probabilistic sensitivity analyses.</div>
+          <ol class="model-steps" aria-label="How the model developed">
+            <li><span class="step">2015 &middot; Excel</span>Built as a spreadsheet model for the published analysis. It was my first decision model built from scratch.</li>
+            <li><span class="step">2022 &middot; R</span>Rewritten in R, which made every calculation explicit and the model easier to check, rerun and extend.</li>
+            <li><span class="step">2026 &middot; Shiny</span>Redesigned as an interactive app and published with its code, so anyone can run the model in a browser.</li>
+          </ol>
+          <div class="entry-desc">The path from spreadsheet to open code also traces how my modelling practice has developed. Publishing the model with its code lets readers inspect the structure and assumptions behind the results, reproduce them, and adapt the model to their own setting. That is the transparency recommended by the <a href="https://doi.org/10.1177/0272989X12454579" target="_blank" rel="noopener">ISPOR&ndash;SMDM modeling good research practices task force</a> and argued for in <a href="https://doi.org/10.1007/s40273-019-00819-z" target="_blank" rel="noopener"><em>PharmacoEconomics</em></a>.</div>
+          <div class="model-links">
+            <a href="https://theejonslo.shinyapps.io/pph-misoprostol/" target="_blank" rel="noopener">Open the app &#8599;</a>
+            <a href="https://github.com/lubingas/PPH-Model" target="_blank" rel="noopener">Code on GitHub</a>
+            <a href="https://doi.org/10.1371/journal.pone.0142550" target="_blank" rel="noopener">Paper</a>
+          </div>
+        </div>
+        <p class="pub-note">The apps run on shinyapps.io and can take a few seconds to start.</p>
       </div>
     </section>
 
