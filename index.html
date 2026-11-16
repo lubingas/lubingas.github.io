@@ -644,6 +644,22 @@ em { font-style: italic; }
         <div class="entry-desc">Health technology assessments often rely on survival curves extrapolated from immature trial data, and plausible models can disagree widely about the long term. The VOI Explorer treats that uncertainty as a value-of-information problem. It estimates the expected value of perfect information (EVPI) at successive data cuts, so the decision uncertainty that longer follow-up removes can be expressed in life-months per patient and in population dollar terms. The engine averages across parametric and mixture-cure model families, uses a recentred bootstrap to separate parameter uncertainty from model bias, projects how EVPI falls as the remaining events accrue, and identifies the part of the uncertainty that further follow-up of the same trial cannot resolve. A cross-trial mode adds a correction for differences between trials. The planned case study uses the published data cuts of CheckMate 067 in advanced melanoma, so projections made from early cuts can be checked against later ones.</div>
         <div class="keywords"><span>Value of Information</span><span>Survival Extrapolation</span><span>Model Averaging</span><span>HTA Methods</span><span>R/Shiny</span></div>
       </div>
+
+      <div class="entry">
+        <div class="entry-title">Obesity and Employment Duration: Revisiting a Hazards Analysis<span class="status">In progress</span></div>
+        <div class="entry-meta">Extends a 2016 graduate course project (CSSS 544, University of Washington) &middot; MEPS and NLSY79</div>
+        <div class="entry-desc">In 2016 I used one panel of the Medical Expenditure Panel Survey (2009&ndash;2010) to ask whether obese workers leave employment sooner. With a log-normal proportional hazards model, obese workers had a 20% higher hazard of leaving employment (95% CI 6% to 37%), and adding a frailty term showed no unobserved heterogeneity. Looking back, the design has clear limits: BMI was measured partway through follow-up, so reverse causation cannot be ruled out; exit dates were reconstructed; and every way of leaving a job was treated alike.</div>
+        <ol class="model-steps" aria-label="How the project has developed">
+          <li><span class="step">2016 &middot; Course project</span>Kaplan&ndash;Meier, Cox and parametric hazards models with left truncation. The frailty model was fitted in mle, a likelihood programming language written by the course instructor.</li>
+          <li><span class="step">2026 &middot; R</span>The frailty likelihood is rewritten in R, with the integral evaluated by Gauss&ndash;Hermite quadrature, so anyone can rerun it with open tools. It reproduces the original fit, and the code, data and a corrected poster are public.</li>
+          <li><span class="step">Next &middot; Extension</span>Nine MEPS panels (2009&ndash;2018) and the NLSY79 (1982&ndash;2021), with BMI measured before follow-up and exits split by reason: layoffs, firings, quits for ill health and moves to another job, with business closures as a negative control.</li>
+        </ol>
+        <div class="keywords"><span>Survival Analysis</span><span>Frailty Models</span><span>Gauss&ndash;Hermite Quadrature</span><span>Obesity</span><span>Labour Markets</span><span>MEPS</span><span>NLSY79</span></div>
+        <div class="model-links">
+          <a href="https://github.com/lubingas/obesity-employment-2016/blob/main/prj_poster.pdf" target="_blank" rel="noopener">Poster (corrected 2026)</a>
+          <a href="https://github.com/lubingas/obesity-employment-2016" target="_blank" rel="noopener">Code and data on GitHub</a>
+        </div>
+      </div>
     </section>
 
     <section class="section" id="scholarly">
